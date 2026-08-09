@@ -13,7 +13,7 @@ internal class Program
     }
 }
 
-public abstract class Entity
+public abstract class Entity : IEquatable<Entity>
 {
     public Guid Id { get; init; } // init: Id elde edildikten sonra bir daha değiştirilememesini sağlar. 
     protected Entity(Guid id)
@@ -46,6 +46,26 @@ public abstract class Entity
     public override int GetHashCode() // Listeler için çalışır
     {
         return Id.GetHashCode();
+    }
+
+    public bool Equals(Entity? other) // IEquatable<Entity> Interface'nin bu metodu performans açısından daha iyi
+    {
+        if (other == null)
+        {
+            return false;
+        }
+
+        if (other is not Entity entity)
+        {
+            return false;
+        }
+
+        if (other.GetType() != GetType())
+        {
+            return false;
+        }
+
+        return entity.Id == Id;
     }
 }
 
