@@ -1,4 +1,5 @@
 ﻿using DomainDrivenDesign.Domain.Abstractions;
+using DomainDrivenDesign.Domain.Shared;
 
 namespace DomainDrivenDesign.Domain.Users;
 
