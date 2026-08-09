@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="DomainDrivenDesign.ConsoleApp/DomainDrivenDesign.ConsoleApp.csproj" />
   <Project Path="DomainDrivenDesign.Domain/DomainDrivenDesign.Domain.csproj" />
 </Solution>
