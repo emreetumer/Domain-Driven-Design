@@ -42,6 +42,11 @@ public abstract class Entity
 
         return entity.Id == Id;
     }
+
+    public override int GetHashCode() // Listeler için çalışır
+    {
+        return Id.GetHashCode();
+    }
 }
 
 public class A : Entity
