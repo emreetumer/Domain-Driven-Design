@@ -1,10 +1,14 @@
-﻿using DomainDrivenDesign.Domain.Products;
+﻿using DomainDrivenDesign.Domain.Abstractions;
+using DomainDrivenDesign.Domain.Products;
 
 namespace DomainDrivenDesign.Domain.Orders;
 
-public sealed class OrderLine
+public sealed class OrderLine : Entity
 {
-    public Guid Id { get; set; }
+    public OrderLine(Guid id) : base(id)
+    {
+    }
+
     public Guid OrderId { get; set; }
     public Guid ProductId { get; set; }
     public Product Product { get; set; }

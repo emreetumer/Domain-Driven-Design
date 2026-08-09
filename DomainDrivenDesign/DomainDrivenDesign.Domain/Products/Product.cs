@@ -1,10 +1,14 @@
-﻿using DomainDrivenDesign.Domain.Categories;
+﻿using DomainDrivenDesign.Domain.Abstractions;
+using DomainDrivenDesign.Domain.Categories;
 
 namespace DomainDrivenDesign.Domain.Products;
 
-public sealed class Product
+public sealed class Product : Entity
 {
-    public Guid Id { get; set; }
+    public Product(Guid id) : base(id)
+    {
+    }
+
     public string Name { get; set; }
     public int Quantity { get; set; }
     public decimal Price { get; set; }
