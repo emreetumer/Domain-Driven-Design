@@ -1,14 +1,12 @@
-﻿namespace DomainDrivenDesign.ConsoleApp;
+﻿using BenchmarkDotNet.Running;
+
+namespace DomainDrivenDesign.ConsoleApp;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        Guid id = Guid.NewGuid();
-        A a1 = new(id);
-        A a2 = new(id);
-
-        Console.WriteLine(a1.Equals(a2));
+        BenchmarkRunner.Run<BenchMarkService>();
         Console.ReadLine();
     }
 }
