@@ -6,6 +6,10 @@ namespace DomainDrivenDesign.Domain.Products;
 
 public sealed class Product : Entity
 {
+    private Product(Guid id) : base(id)
+    {
+
+    }
     public Product(Guid id, Name name, int quantity, Money price, Guid categoryId) : base(id)
     {
         Name = name;
