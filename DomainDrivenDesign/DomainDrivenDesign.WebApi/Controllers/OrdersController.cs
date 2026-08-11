@@ -23,7 +23,7 @@ public class OrdersController : ControllerBase
         return NoContent();
     }
 
-    [HttpGet]
+    [HttpPost]
     public async Task<IActionResult> GetAll(GetAllOrderQuery request, CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(request, cancellationToken);

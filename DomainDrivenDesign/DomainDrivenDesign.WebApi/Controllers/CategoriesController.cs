@@ -23,7 +23,7 @@ public class CategoriesController : ControllerBase
         return NoContent();
     }
 
-    [HttpGet]
+    [HttpPost]
     public async Task<IActionResult> GetAll(GetAllCategoryQuery request, CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(request, cancellationToken);
