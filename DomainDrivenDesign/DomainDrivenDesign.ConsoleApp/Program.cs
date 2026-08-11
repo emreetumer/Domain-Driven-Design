@@ -1,13 +1,60 @@
-﻿using BenchmarkDotNet.Running;
-
-namespace DomainDrivenDesign.ConsoleApp;
+﻿namespace DomainDrivenDesign.ConsoleApp;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        BenchmarkRunner.Run<BenchMarkService>();
+        Order order = new();
+        order.CreateOrder(1, "Domates");
+        order.CreateOrder(2, "Elma");
+        order.CreateOrder(3, "Armut");
+
+        DomainEventDispacther.Dispatch(order.DomainEvents);
+
+        //BenchmarkRunner.Run<BenchMarkService>();
         Console.ReadLine();
+    }
+}
+
+public class Order
+{
+    public int Id { get; set; }
+    public string ProductName { get; set; }
+    public List<IDomainEvent> DomainEvents { get; } = new();
+    public void CreateOrder(int id, string productName)
+    {
+        Id = id;
+        ProductName = productName;
+
+        DomainEvents.Add(new OrderCreatedEvent(id));
+    }
+}
+
+public static class DomainEventDispacther
+{
+    public static void Dispatch(List<IDomainEvent> events)
+    {
+        foreach (var domainEvent in events)
+        {
+            if (domainEvent is OrderCreatedEvent orderEvent)
+            {
+                Console.WriteLine($"Order Event işlemi başladı, Id: {orderEvent.OrderId}");
+            }
+        }
+    }
+}
+
+public interface IDomainEvent
+{
+
+}
+
+public class OrderCreatedEvent : IDomainEvent
+{
+    public int OrderId { get; }
+    public OrderCreatedEvent(int orderId)
+    {
+        OrderId = orderId;
     }
 }
 
