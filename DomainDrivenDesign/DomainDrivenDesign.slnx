@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="DomainDrivenDesign.Application/DomainDrivenDesign.Application.csproj" Id="f5cbfecf-e7d5-441e-ab40-d68a035a5d85" />
+  <Project Path="DomainDrivenDesign.ConsoleApp/DomainDrivenDesign.ConsoleApp.csproj" />
   <Project Path="DomainDrivenDesign.Domain/DomainDrivenDesign.Domain.csproj" />
+  <Project Path="DomainDrivenDesign.Infrastructure/DomainDrivenDesign.Infrastructure.csproj" Id="28557d22-43b6-47a5-b63f-40dc08c6384a" />
+  <Project Path="DomainDrivenDesign.WebApi/DomainDrivenDesign.WebApi.csproj" Id="f4961342-9fee-4c56-adbd-bbbf08e6c121" />
 </Solution>
