@@ -1,4 +1,6 @@
-﻿namespace DomainDrivenDesign.ConsoleApp;
+﻿using MediatR;
+
+namespace DomainDrivenDesign.ConsoleApp;
 
 internal class Program
 {
@@ -18,6 +20,7 @@ internal class Program
 
 public class Order
 {
+    private readonly IMediator _mediator;
     public int Id { get; set; }
     public string ProductName { get; set; }
     public List<IDomainEvent> DomainEvents { get; } = new();
@@ -26,7 +29,45 @@ public class Order
         Id = id;
         ProductName = productName;
 
-        DomainEvents.Add(new OrderCreatedEvent(id));
+        //DomainEvents.Add(new OrderCreatedEvent(id));
+
+        _mediator.Publish(new OrderCompletedEvent(id));
+    }
+}
+
+public class StockUpdateHandler : INotificationHandler<OrderCompletedEvent>
+{
+    public Task Handle(OrderCompletedEvent notification, CancellationToken cancellationToken)
+    {
+        //işlemlerimizi yapabiliriz
+        return Task.CompletedTask;
+    }
+}
+
+public class SendMailHandler : INotificationHandler<OrderCompletedEvent>
+{
+    public Task Handle(OrderCompletedEvent notification, CancellationToken cancellationToken)
+    {
+        //mail gönderme işlemlerimizi yapabiliriz
+        return Task.CompletedTask;
+    }
+}
+
+public class SendSmsHandler : INotificationHandler<OrderCompletedEvent>
+{
+    public Task Handle(OrderCompletedEvent notification, CancellationToken cancellationToken)
+    {
+        //sms gönderme işlemlerimizi yapabiliriz
+        return Task.CompletedTask;
+    }
+}
+
+public class OrderCompletedEvent : INotification
+{
+    public int Id { get; }
+    public OrderCompletedEvent(int id)
+    {
+        Id = id;
     }
 }
 
